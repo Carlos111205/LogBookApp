@@ -1,0 +1,17 @@
+.brand-logo-wrap{display:grid;place-items:center;width:44px;height:44px;flex:none;border-radius:9px;background:#fff;overflow:hidden}
+.brand-logo{width:40px;height:40px;object-fit:contain}
+.account-controls{display:flex;align-items:center;gap:10px}
+.username{font-size:11px;font-weight:600;color:#40515b}
+.logout-button,.auth-link{border:0;background:none;color:#147d76;text-decoration:none;font:600 11px 'DM Sans',sans-serif;cursor:pointer;padding:6px 2px}
+.auth-link{font-size:12px}
+.signup-link{border:1px solid #dfe8e8;border-radius:5px;padding:7px 10px}
+.auth-card{max-width:440px;margin:38px auto;padding:26px}
+.auth-card h1{font-size:25px}
+.auth-card>p{font-size:12px;color:#78848e;margin:6px 0 20px}
+.auth-card .field{margin:15px 0}
+.auth-submit{width:100%;margin-top:6px}
+.auth-foot{border-top:1px solid #e7ebed;margin-top:18px;padding-top:14px;font-size:11px;color:#78848e}
+.auth-foot a{color:#147d76;font-weight:700;text-decoration:none}
+.field-help{color:#78848e;font-size:10px;line-height:1.5;margin-top:5px}
+.auth-card ul{margin:4px 0;padding-left:16px}
+@media(max-width:650px){.username{display:none}.auth-card{margin:10px auto;padding:20px}}
