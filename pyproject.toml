@@ -1,0 +1,2 @@
+[tool.vercel.scripts]
+build = 'if [ -n "$DATABASE_URL_UNPOOLED" ]; then export DATABASE_URL="$DATABASE_URL_UNPOOLED"; fi && python manage.py migrate --noinput'

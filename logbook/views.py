@@ -4,6 +4,7 @@ from pathlib import Path
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
@@ -35,9 +36,10 @@ def signup(request):
     if request.user.is_authenticated: return redirect("dashboard")
     form=SignUpForm(request.POST or None)
     if request.method=="POST" and form.is_valid():
-        user=form.save()
+        with transaction.atomic():
+            user=form.save()
+            StudentProfile.objects.create(user=user)
         login(request,user,backend="django.contrib.auth.backends.ModelBackend")
-        StudentProfile.for_user(user)
         messages.success(request,"Your account is ready. Add your placement details to get started.")
         return redirect("profile")
     return render(request,"logbook/signup.html",{"form":form})

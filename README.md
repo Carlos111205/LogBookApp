@@ -23,6 +23,8 @@ The database file `db.sqlite3` is created in this folder. Back it up to preserve
 
 The settings accept Vercel's `VERCEL_URL`, `VERCEL_BRANCH_URL`, and `VERCEL_PROJECT_PRODUCTION_URL` as allowed hosts and HTTPS CSRF origins. In Vercel Project Settings, enable access to system environment variables and redeploy. Set `DJANGO_SECRET_KEY` to a strong random value and `DJANGO_DEBUG=0` for the deployment. If system variables are unavailable, set `DJANGO_ALLOWED_HOSTS` to the exact deployment hostname(s) and `DJANGO_CSRF_TRUSTED_ORIGINS` to their `https://` origins.
 
+Vercel deployments require a persistent PostgreSQL database. Add a PostgreSQL integration from the Vercel project's **Storage** or **Marketplace** area and make sure it provides `DATABASE_URL`; when available, `DATABASE_URL_UNPOOLED` is used for deployment migrations. The Vercel build hook runs `py manage.py migrate --noinput` against that database. SQLite remains the local development database only; it is not persistent across Vercel serverless instances.
+
 ## Student accounts and privacy
 
 Create a separate account for each student at `/accounts/signup/`. Profiles and log entries are owned by that account; dashboards, edits, deletes, and Word/PDF exports are filtered to the signed-in user. Signing out returns to the sign-in page.
